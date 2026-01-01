@@ -1,1 +1,392 @@
-0
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nikhil Rajas • AWS Data Engineer</title>
+  <meta name="description" content="AWS Data Engineer specializing in cloud migration, data pipelines, and big data technologies.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-dark: #0a0a0a;
+      --bg-card: #121212;
+      --text-primary: #ffffff;
+      --text-secondary: #b0b0b0;
+      --accent-blue: #00bcd4;
+      --accent-glow: rgba(0, 188, 212, 0.4);
+      --accent-hover: #6ee7f3;
+      --border-color: #1e1e1e;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      --neon-glow: 0 0 10px var(--accent-glow), 0 0 20px var(--accent-glow);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    .site-header {
+      background-color: rgba(10, 10, 10, 0.9);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--accent-blue);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      text-shadow: var(--neon-glow);
+    }
+
+    .brand:hover {
+      color: var(--accent-hover);
+    }
+
+    .links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--accent-blue);
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--accent-blue);
+      box-shadow: var(--neon-glow);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 6rem 0 4rem;
+      background: linear-gradient(to bottom, var(--bg-dark), #0f1419);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 50%, rgba(0, 188, 212, 0.1) 0%, transparent 50%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .signature-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3.5rem;
+      color: var(--accent-blue);
+      margin-bottom: 0.5rem;
+      text-shadow: var(--neon-glow);
+    }
+
+    .tagline {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .aboutp {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      max-width: 90%;
+    }
+
+    strong {
+      color: var(--accent-blue);
+      font-weight: 600;
+    }
+
+    .socials {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: var(--bg-card);
+      color: var(--text-secondary);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border-color);
+    }
+
+    .icon:hover {
+      color: var(--accent-blue);
+      border-color: var(--accent-blue);
+      box-shadow: var(--neon-glow);
+      transform: translateY(-2px);
+    }
+
+    .icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .illustration {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
+
+    /* Tech Highlights */
+    .tech-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .tech-tag {
+      background-color: rgba(0, 188, 212, 0.1);
+      color: var(--accent-blue);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid rgba(0, 188, 212, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .tech-tag:hover {
+      background-color: rgba(0, 188, 212, 0.2);
+      transform: translateY(-2px);
+      box-shadow: var(--neon-glow);
+    }
+
+    /* Footer */
+    .site-footer {
+      background-color: var(--bg-card);
+      padding: 2rem 0;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .site-footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-signature {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.5rem;
+      color: var(--accent-blue);
+      text-shadow: var(--neon-glow);
+    }
+
+    .footer-right {
+      color: var(--text-secondary);
+    }
+
+    /* Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .signature-text {
+        font-size: 2.5rem;
+      }
+      
+      .site-footer .container {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      
+      .tech-highlights {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="home.html">NR</a>
+      <div class="links">
+        <a href="home.html" class="nav-link active">Home</a>
+        <a href="education.html" class="nav-link">Education</a>
+        <a href="experience.html" class="nav-link">Experience</a>
+        <a href="contact.html" class="nav-link">Contact Me</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-grid reveal container">
+      <div>
+        <div class="signature-text">Nikhil Rajas</div>
+        <div class="tagline">AWS Data Engineer & Cloud Specialist</div>
+        <p class="aboutp">
+          I design and implement scalable data solutions on AWS and Azure, specializing in 
+          <strong>data migration</strong>, <strong>ETL pipelines</strong>, <strong>data governance</strong>, and 
+          <strong>cloud architecture</strong>. Expert in AWS Glue, Redshift, Databricks, and Apache Spark.
+        </p>
+
+        <div class="tech-highlights">
+          <span class="tech-tag">AWS Certified Data Engineer</span>
+          <span class="tech-tag">Azure Data Engineer</span>
+          <span class="tech-tag">Apache Spark</span>
+          <span class="tech-tag">Data Governance</span>
+          <span class="tech-tag">Cloud Migration</span>
+          <span class="tech-tag">GxP Compliance</span>
+        </div>
+
+        <div class="socials">
+          <!-- LinkedIn -->
+          <a class="icon" href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V24h-4V8.5zm7 0h3.8v2.1h.1c.5-.9 1.7-2.1 3.6-2.1 3.8 0 4.5 2.5 4.5 5.8V24h-4v-6.8c0-1.6 0-3.7-2.2-3.7s-2.5 1.7-2.5 3.6V24h-4V8.5z"/></svg>
+          </a>
+          <!-- GitHub -->
+          <a class="icon" href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.57 0-.28-.01-1.02-.02-2-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.35-1.77-1.35-1.77-1.1-.76.08-.75.08-.75 1.21.09 1.85 1.25 1.85 1.25 1.08 1.85 2.84 1.31 3.53 1 .11-.78.42-1.31.76-1.61-2.67-.31-5.47-1.34-5.47-5.95 0-1.31.47-2.38 1.24-3.22-.12-.31-.54-1.56.12-3.25 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.69.24 2.94.12 3.25.77.84 1.23 1.91 1.23 3.22 0 4.62-2.8 5.63-5.48 5.93.43.38.81 1.12.81 2.26 0 1.63-.01 2.95-.01 3.35 0 .31.21.68.82.56A12 12 0 0 0 12 .5z"/></svg>
+          </a>
+          <!-- Email -->
+          <a class="icon" href="mailto:nikhilarajas20@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 13.065 0 6V4l12 7 12-7v2l-12 7.065ZM0 8v12h24V8l-12 7L0 8Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right illustration (Cloud Data Pipeline) -->
+      <div>
+        <svg class="illustration" viewBox="0 0 560 360" aria-hidden="true">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1">
+              <stop offset="0" stop-color="#00bcd4"/><stop offset="1" stop-color="#6ee7f3"/>
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          
+          <!-- Cloud -->
+          <path d="M100,120 C80,100 60,90 40,100 C20,110 10,130 20,150 C30,170 50,180 70,170 C90,180 110,190 130,180 C150,190 170,180 190,170 C210,180 230,170 240,150 C250,130 240,110 220,100 C200,90 180,100 160,120"
+                fill="none" stroke="url(#g)" stroke-width="8" filter="url(#glow)"/>
+          
+          <!-- Data flow arrows -->
+          <path d="M280,180 L350,180 L370,160" fill="none" stroke="url(#g)" stroke-width="4" stroke-linecap="round"/>
+          <path d="M280,180 L350,180 L370,200" fill="none" stroke="url(#g)" stroke-width="4" stroke-linecap="round"/>
+          
+          <!-- Database symbol -->
+          <ellipse cx="400" cy="180" rx="40" ry="15" fill="#143238"/>
+          <rect x="360" y="180" width="80" height="40" rx="5" fill="#143238"/>
+          <ellipse cx="400" cy="220" rx="40" ry="15" fill="#143238"/>
+          
+          <!-- Spark nodes -->
+          <circle cx="300" cy="120" r="6" fill="#00bcd4" filter="url(#glow)"/>
+          <circle cx="320" cy="140" r="6" fill="#00bcd4" filter="url(#glow)"/>
+          <circle cx="300" cy="160" r="6" fill="#00bcd4" filter="url(#glow)"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-left"><span class="footer-signature">Nikhil Rajas</span></div>
+      <div class="footer-right">© <span id="year"></span> · AWS Data Engineer</div>
+    </div>
+  </footer>
+
+  <script>
+    // simple reveal-on-load & year
+    (function(){
+      const elements = document.querySelectorAll('.reveal');
+      elements.forEach(el => {
+        requestAnimationFrame(() => el.classList.add('visible'));
+      });
+      document.getElementById('year').textContent = new Date().getFullYear();
+    }());
+  </script>
+</body>
+</html>
