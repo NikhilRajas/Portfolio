@@ -1,1 +1,426 @@
-0
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Experience • Nikhil Rajas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-dark: #0a0a0a;
+      --bg-card: #121212;
+      --text-primary: #ffffff;
+      --text-secondary: #b0b0b0;
+      --accent-blue: #00bcd4;
+      --accent-glow: rgba(0, 188, 212, 0.4);
+      --accent-hover: #6ee7f3;
+      --border-color: #1e1e1e;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      --neon-glow: 0 0 10px var(--accent-glow), 0 0 20px var(--accent-glow);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    .site-header {
+      background-color: rgba(10, 10, 10, 0.9);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--accent-blue);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      text-shadow: var(--neon-glow);
+    }
+
+    .brand:hover {
+      color: var(--accent-hover);
+    }
+
+    .links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--accent-blue);
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--accent-blue);
+      box-shadow: var(--neon-glow);
+    }
+
+    /* Sections */
+    .section {
+      padding: 4rem 0;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: var(--text-primary);
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background-color: var(--accent-blue);
+      box-shadow: var(--neon-glow);
+    }
+
+    /* Timeline */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .item {
+      background-color: var(--bg-card);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .item:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-blue);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), var(--neon-glow);
+    }
+
+    .item::before {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 2rem;
+      width: 20px;
+      height: 20px;
+      background-color: var(--accent-blue);
+      border-radius: 50%;
+      box-shadow: var(--neon-glow);
+    }
+
+    .item h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent-blue);
+    }
+
+    .meta {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    .client-tag {
+      display: inline-block;
+      background-color: rgba(0, 188, 212, 0.1);
+      color: var(--accent-blue);
+      padding: 0.2rem 0.8rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      margin-left: 0.5rem;
+      border: 1px solid rgba(0, 188, 212, 0.3);
+    }
+
+    .item ul {
+      padding-left: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .item li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .project-card {
+      background-color: var(--bg-card);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-blue);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), var(--neon-glow);
+    }
+
+    .project-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--accent-blue);
+    }
+
+    .project-card p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Tags */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .tags span {
+      background-color: rgba(0, 188, 212, 0.1);
+      color: var(--accent-blue);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border: 1px solid rgba(0, 188, 212, 0.3);
+    }
+
+    /* Footer */
+    .site-footer {
+      background-color: var(--bg-card);
+      padding: 2rem 0;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .site-footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-signature {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.5rem;
+      color: var(--accent-blue);
+      text-shadow: var(--neon-glow);
+    }
+
+    .footer-right {
+      color: var(--text-secondary);
+    }
+
+    /* Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .item::before {
+        left: 50%;
+        top: -10px;
+        transform: translateX(-50%);
+      }
+      
+      .site-footer .container {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="home.html">NR</a>
+      <div class="links">
+        <a href="home.html" class="nav-link">Home</a>
+        <a href="education.html" class="nav-link">Education</a>
+        <a href="experience.html" class="nav-link active">Experience</a>
+        <a href="contact.html" class="nav-link">Contact Me</a>
+      </div>
+    </nav>
+  </header>
+
+<section class="section container reveal">
+  <h2>Work Experience</h2>
+  <div class="timeline">
+    <div class="item card">
+      <h3>AWS Data Engineer – Cognizant <span class="client-tag">Client: Toyota Motors North America</span></h3>
+      <div class="meta">Jan 2025 – Aug 2025</div>
+      <ul>
+        <li>Automated system analysis and reporting workflows using scripting and orchestration tool (Airflow), improving data pipeline efficiency and reducing manual intervention by 20%.</li>
+        <li>Leveraged Databricks delta lake to analyze large datasets for data patterns and trends, showcasing expertise in managing cloud platforms and ensuring data accuracy for 27 applications.</li>
+        <li>Designed and implemented processes to identify and remediate data inconsistencies, contributing to robust data governance and compliance practices.</li>
+        <li>Strengthened knowledge in secure data handling and storage practices, aligning with compliance standards for sensitive information in cloud and on-premise environments.</li>
+      </ul>
+    </div>
+    
+    <div class="item card">
+      <h3>AWS Data Engineer – Cognizant <span class="client-tag">Client: Merck Pharmaceuticals</span></h3>
+      <div class="meta">Jul 2022 – Dec 2024</div>
+      <ul>
+        <li>Designed and implemented scalable data archival solutions using AWS (S3, Glue, Redshift, Batch) and big data technologies (Spark, Python, SQL) to securely migrate sensitive on-premises data to the cloud, processing over 1TB+ of data per application and ensuring compliance with GxP standards.</li>
+        <li>Streamlined and automated the retirement of 74 end-of-life applications using Airflow DAGs for automated data workflow, including hardware and software decommissioning, by coordinating approvals, updating CMDB dependencies in ServiceNow, and documenting processes in JIRA.</li>
+        <li>Reduced technical debt by 43% and cut application retirement turnaround time by 50%, achieving significant operational cost savings and improved efficiency.</li>
+        <li>Applied legal hold and retention policies to ensure robust data governance. Automated archival processes and developed reports to meet compliance and operational requirements for infrequent data access.</li>
+        <li>Managed IAM activities such as Role-Based Access Control (RBAC), system troubleshooting, monitoring using AWS CloudWatch, and promotion of validated archived data to higher production environments with 100% accuracy.</li>
+        <li>Followed Agile practices to enable iterative development, ensure continuous improvement, and track progress effectively throughout the project lifecycle.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section container reveal">
+  <h2>Data Engineering Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <h3>Cloud Data Migration Platform</h3>
+      <p>Built a scalable AWS data migration solution using S3, Glue, and Redshift to securely archive 1TB+ of sensitive pharmaceutical data with GxP compliance.</p>
+      <div class="tags">
+        <span>AWS S3</span>
+        <span>AWS Glue</span>
+        <span>Redshift</span>
+        <span>Apache Spark</span>
+        <span>GxP Compliance</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3>Automated Data Pipeline Orchestration</h3>
+      <p>Designed and implemented Airflow DAGs to automate data workflows, reducing manual intervention by 20% and improving pipeline efficiency.</p>
+      <div class="tags">
+        <span>Airflow</span>
+        <span>Python</span>
+        <span>Data Orchestration</span>
+        <span>ETL</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3>Data Governance & Compliance Framework</h3>
+      <p>Implemented data governance processes including legal holds, retention policies, and RBAC to ensure compliance across 27 enterprise applications.</p>
+      <div class="tags">
+        <span>Data Governance</span>
+        <span>RBAC</span>
+        <span>Compliance</span>
+        <span>Legal Holds</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3>Application Retirement Automation</h3>
+      <p>Automated retirement of 74 end-of-life applications, reducing technical debt by 43% and cutting turnaround time by 50%.</p>
+      <div class="tags">
+        <span>Automation</span>
+        <span>ServiceNow</span>
+        <span>JIRA</span>
+        <span>Cost Optimization</span>
+      </div>
+    </div>
+
+   <div class="project-card">
+     <h3>Big Data Analytics with Databricks</h3>
+     <p>Leveraged Databricks Delta Lake for large-scale data pattern analysis and trend identification across multiple enterprise applications.</p>
+     <div class="tags">
+       <span>Databricks</span>
+       <span>Delta Lake</span>
+       <span>Big Data</span>
+       <span>Data Analytics</span>
+     </div>
+   </div>
+  </div>
+</section>
+     
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-left"><span class="footer-signature">Nikhil&nbsp;Rajas</span></div>
+    <div class="footer-right">© <span id="year"></span> · AWS Data Engineer</div>
+  </div>
+</footer>
+<script>
+  (function(){
+    const elements = document.querySelectorAll('.reveal');
+    elements.forEach(el => {
+      requestAnimationFrame(() => el.classList.add('visible'));
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  }());
+</script>
+</body>
+</html>
