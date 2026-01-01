@@ -1,1 +1,109 @@
-0
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nikhil Rajas • Enter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-dark: #0a0a0a;
+      --accent-blue: #00bcd4;
+      --accent-glow: rgba(0, 188, 212, 0.4);
+      --accent-hover: #6ee7f3;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      color: white;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .splash-wrap {
+      text-align: center;
+      position: relative;
+    }
+
+    .data-pipeline {
+      width: 300px;
+      height: 150px;
+      margin: 0 auto 2rem;
+    }
+
+    .splash-name {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3.5rem;
+      color: var(--accent-blue);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px var(--accent-glow), 0 0 20px var(--accent-glow);
+    }
+
+    .splash-tagline {
+      font-size: 1.5rem;
+      color: #b0b0b0;
+      margin-bottom: 2rem;
+    }
+
+    .splash-hint {
+      color: var(--accent-blue);
+      font-size: 1rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+  </style>
+  <script>
+    // Auto enter after the short animation
+    window.addEventListener('load', () => {
+      setTimeout(() => location.href = 'home.html', 2000);
+    });
+  </script>
+</head>
+<body class="splash-body">
+  <div class="splash-wrap" role="main">
+    <!-- Data pipeline visualization -->
+    <svg class="data-pipeline" viewBox="0 0 600 300" aria-hidden="true">
+      <defs>
+        <filter id="tealGlow">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <linearGradient id="pipelineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#00bcd4;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#6ee7f3;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <!-- Data flow lines -->
+      <path d="M100,100 L250,100 L300,150 L350,100 L500,100" 
+            fill="none" stroke="url(#pipelineGrad)" stroke-width="8" stroke-linecap="round" filter="url(#tealGlow)"/>
+      <path d="M100,200 L250,200 L300,150 L350,200 L500,200" 
+            fill="none" stroke="url(#pipelineGrad)" stroke-width="8" stroke-linecap="round" filter="url(#tealGlow)"/>
+      <!-- Data nodes -->
+      <circle cx="100" cy="100" r="12" fill="#00bcd4" filter="url(#tealGlow)"/>
+      <circle cx="300" cy="150" r="15" fill="#00bcd4" filter="url(#tealGlow)"/>
+      <circle cx="500" cy="100" r="12" fill="#00bcd4" filter="url(#tealGlow)"/>
+      <circle cx="500" cy="200" r="12" fill="#00bcd4" filter="url(#tealGlow)"/>
+    </svg>
+
+    <h1 class="splash-name">Nikhil Rajas</h1>
+    <p class="splash-tagline">AWS Data Engineer & Cloud Specialist</p>
+    <div class="splash-hint">Entering…</div>
+  </div>
+</body>
+</html>
